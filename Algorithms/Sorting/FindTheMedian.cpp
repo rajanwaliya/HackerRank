@@ -5,14 +5,21 @@ using namespace std;
 //declaration and call to a method
 //for instance I was calling partition as : partition(left,right,k)
 
-
 /**
 First approach that should come to mind:
 1. sort the vector using built-in sort(v.begin(),v.end())
 2. return the n/2 th element from sorted vector
 **/
+
+
+/**
+This method is for learning purpose
+Selection Algorithm
+https://discuss.codechef.com/questions/1489/find-median-in-an-unsorted-array-without-sorting-it
+**/
 vector<int> v;
 
+//same as in quicksort
 int partition(int l, int r){
     int pivot = v[r];
     int j=l;
@@ -28,12 +35,14 @@ int partition(int l, int r){
 
 
 int select(int left, int right, int k){
-    for(;;){
+    for(;;){ //infinite loop
         int ind = partition(left,right);
         
         if(k==ind){
             return v[k];
         }
+
+        //similar to binary search
         if(k>ind){ //search in right half
             left = ind+1; 
         }else{ //search in left half
