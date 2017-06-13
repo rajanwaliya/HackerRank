@@ -1,36 +1,32 @@
-#include<bits/stdc++.h>
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+#include <stack>
 using namespace std;
 
+
 int main() {
-    stack<int> s;
-    stack<int> maxS;
-    int q;
-    cin >> q;
-    int maxe = -1;
-    while(q-->0){
-        int type;
-        cin >> type;
-        int ele;
-        if(type==1){
-            cin >> ele;
-            maxe = max(maxe, ele);
-            maxS.push(maxe);
-            s.push(ele);
-        }
-        if(type==2){
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */   
+    stack <int> s;
+    int q,opt,x,data;
+    cin>>q;
+    for(int i=0;i<q;i++){
+        cin>>opt;
+         if(opt == 1){
+            cin>>x;
+             if(s.empty()) s.push(x);
+                else s.push(max(x,s.top()));
+            }else 
+             if(opt == 2){
             s.pop();
-            maxS.pop();
-            //** this is important, what if what was in maxe is not any more in the maxS stack?
-            //maxe should stay updated
-            if(maxS.size()==0){
-                maxe = -1;
-            }
-            else{
-                maxe = maxS.top();
-            }
         }
-        if(type==3){
-            cout << maxS.top() << endl;
+        else if(opt == 3){
+            if(s.top()){
+                
+            cout<<s.top()<<endl;
+                }
         }
     }
     return 0;
