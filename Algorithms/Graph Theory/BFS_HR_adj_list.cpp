@@ -2,7 +2,6 @@
 
 #include <bits/stdc++.h>
 using namespace std;
-#define INF 0x3f3f3f3f
 
 int main() {
     /* Enter your code here. Read input from STDIN. Print output to STDOUT */  
@@ -24,7 +23,7 @@ int main() {
         cin >> s;
         s--;
         vector<bool> vis(n,false);
-        vector<int> dis(n,INF);
+        vector<int> dis(n,-1);
         dis[s] = 0;
         vis[s] = true;
         queue<int> q;
@@ -45,7 +44,7 @@ int main() {
         
         for(int i=0;i<n;i++){
             if(i==s){continue;}
-            if(dis[i]==INF){cout << "-1 ";}
+            if(dis[i]==-1){cout << "-1 ";}
             else{
                 cout << 6*dis[i] << " ";
             }
